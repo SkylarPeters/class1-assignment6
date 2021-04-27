@@ -25,6 +25,7 @@ namespace cis237_assignment6.Controllers
             // in the session. If there is nothing in the session
             // we can still use these variables as a default value.
             string filterName = "";
+            string filterPack = "";
             string filterMin = "";
             string filterMax = "";
             // Define a min and max for the price
@@ -39,6 +40,13 @@ namespace cis237_assignment6.Controllers
             ))
             {
                 filterName = (string)Session["session_name"];
+            }
+
+            if (!string.IsNullOrWhiteSpace(
+                (string)Session["session_pack"]
+            ))
+            {
+                filterPack = (string)Session["session_pack"];
             }
 
             if (!string.IsNullOrWhiteSpace(
@@ -68,13 +76,15 @@ namespace cis237_assignment6.Controllers
             IList<Beverage> finalFiltered = BeveragesToFilter.Where(
                 Beverage => Beverage.price >= min &&
                 Beverage.price <= max &&
-                Beverage.name.Contains(filterName)
+                Beverage.name.Contains(filterName) &&
+                Beverage.pack.Contains(filterPack)
             ).ToList();
 
             // Place the string representation of the values
             // that are in the session into the viewbag so
             // that they can be retrieved and displayed on the view.
             ViewBag.filterName = filterName;
+            ViewBag.filterPack = filterPack;
             ViewBag.filterMin = filterMin;
             ViewBag.filterMax = filterMax;
 
@@ -190,6 +200,7 @@ namespace cis237_assignment6.Controllers
             // The string that is used as a key to get the data matches
             // the name property of the form control
             string name = Request.Form.Get("name");
+            string pack = Request.Form.Get("pack");
             string min = Request.Form.Get("min");
             string max = Request.Form.Get("max");
 
@@ -197,6 +208,7 @@ namespace cis237_assignment6.Controllers
             // request object, let's put it into the session
             // so that other methods can have access to it.
             Session["session_name"] = name;
+            Session["session_pack"] = pack;
             Session["session_min"] = min;
             Session["session_max"] = max;
 

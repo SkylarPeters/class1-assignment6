@@ -11,8 +11,8 @@
         <legend>Search Filter</legend>
 
         @*Open up a form that will go to the
-            Filter method on the Cars Controller
-            with a POST request*@
+        Filter method on the Cars Controller
+        with a POST request*@
         @using (
             Html.BeginForm(
                 "Filter", // Action method to run
@@ -27,6 +27,8 @@
 
             <label for="name">Name</label>
             @Html.TextBox("name", (string)ViewBag.filterName)
+            <label for="pack">Pack</label>
+            @Html.TextBox("pack", (string)ViewBag.filterPack)
             <label for="min">Min Price</label>
             @Html.TextBox("min", (string)ViewBag.filterMin)
             <label for="max">Max Price</label>
