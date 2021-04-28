@@ -2,7 +2,7 @@
 
 ## Author
 
-
+Skylar Peters
 
 ## Description
 
@@ -137,6 +137,8 @@ the culprit, but I don't know which ones.
 
 ## Outside Resources Used
 
-
+None
 
 ## Known Problems, Issues, And/Or Errors in the Program
+
+None, I didn't go for the extra credit work.
